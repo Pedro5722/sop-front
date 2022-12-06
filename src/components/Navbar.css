@@ -1,0 +1,33 @@
+navbar{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 12rem;
+  border-bottom: 5px solid var(--green-100);
+  padding-top: 0.5rem;
+      
+}
+navbar ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style-type: none
+}
+navbar ul li{
+  color: var(--green-500);
+  font-weight: bold;
+  padding: 0 1rem;
+  border-left: 3px solid var(--green-500);
+  
+}
+navbar ul li :hover{
+  color: var(--orange-200);
+}
+a{
+  text-decoration: none;
+  color: var(--green-500);
+  font-weight: bold;
+  font-size: 1.2rem;
+  
+
+}
