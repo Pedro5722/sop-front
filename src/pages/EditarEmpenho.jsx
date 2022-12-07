@@ -2,27 +2,20 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 
-export function EditarDespesa(props) {
-  const baseURL = "http://localhost:8084/financeiro-api/despesa/";
+export function Editarempenho(props) {
+  const baseURL = "http://localhost:8084/financeiro-api/empenho/";
   const navigate = useNavigate();
 
   let {id} = useParams();
-
+  console.log(id)
 
   const [numeroProtocolo, setNumeroProtocolo] = useState(0);
   const [dataProtocolo, setDataProtocolo] = useState(Date);
-  const [tipoDespesa, setTipoDespesa] = useState(0);
+  const [tipoempenho, setTipoempenho] = useState(0);
   const [dataVencimento, setDataVencimento] = useState(Date);
   const [credor, setcredor] = useState("");
   const [descricao, setDescricao] = useState("");
   const [valor, setvalor] = useState(0.0);
-
-  const [dados, setDados] = useState([])
-  useEffect(() => {
-    axios.get(baseURL + id).then((response) => {
-      setDados(response.data);
-    });
-  }, []);
 
   const numeroProtocoloChangeHandler = (event) => {
     setNumeroProtocolo(event.target.value);
@@ -30,8 +23,8 @@ export function EditarDespesa(props) {
   const dataProtocoloChangeHandler = (event) => {
     setDataProtocolo(event.target.value);
   };
-  const tipoDespesaChangeHandler = (event) => {
-    setTipoDespesa(event.target.value);
+  const tipoempenhoChangeHandler = (event) => {
+    setTipoempenho(event.target.value);
   };
   const dataVencimentoChangeHandler = (event) => {
     setDataVencimento(event.target.value);
@@ -44,14 +37,14 @@ export function EditarDespesa(props) {
   };
   const valorChangeHandler = (event) => {
     setvalor(event.target.value);
-  }; 
-  
+  };
+
   
 
   const submitActionHandler = (event) => {
     event.preventDefault();
     axios
-      .put(baseURL, {
+      .post(baseURL, {
         numeroProtocolo: numeroProtocolo,
         tipo: 2,
         dataProtocolo: dataProtocolo,
@@ -75,16 +68,28 @@ export function EditarDespesa(props) {
     setDataVencimento("");
     setDescricao("");
     setNumeroProtocolo("");
-    setTipoDespesa("");
+    setTipoempenho("");
     setcredor("");
     setvalor("");
   };
+
+
+  useEffect(() => {
+    axios.get(baseURL + props.id).then((response) => {
+      data(response.data);
+    });
+  }, []);
+   var data
+  if(data){
+    console.log(data)
+  }
 
   return (
     <div class="m-5">
       <button class="mx-5 mb-3">
         <a href="/">Voltar a tela inicial</a>
       </button>
+      <button></button>
       <form class="card mx-5" onSubmit={submitActionHandler}>
         <div class="form-row p-5">
           <div class="col">
@@ -92,7 +97,7 @@ export function EditarDespesa(props) {
             <input
               type="text"
               class="form-control"
-              value={dados?.numeroProtocolo}
+              value={numeroProtocolo}
               onChange={numeroProtocoloChangeHandler}
               placeholder="Ex.: 12345678"
               required
@@ -103,18 +108,18 @@ export function EditarDespesa(props) {
             <input
               type="date"
               class="form-control"
-              value={dados?.dataProtocolo}
+              value={dataProtocolo}
               onChange={dataProtocoloChangeHandler}
               required
             ></input>
           </div>
           <div class="col">
-            <label htmlFor="">Tipo de despesa</label>
+            <label htmlFor="">Tipo de empenho</label>
             <input
               type="text"
               class="form-control"
-              value={dados?.tipo?.id}
-              onChange={tipoDespesaChangeHandler}
+              value={tipoempenho}
+              onChange={tipoempenhoChangeHandler}
               placeholder="Ex.: 1"
               required
             ></input>
@@ -124,7 +129,7 @@ export function EditarDespesa(props) {
             <input
               type="date"
               class="form-control"
-              value={dados?.dataVencimento}
+              value={dataVencimento}
               onChange={dataVencimentoChangeHandler}
               required
             ></input>
@@ -134,7 +139,7 @@ export function EditarDespesa(props) {
             <input
               type="text"
               class="form-control"
-              value={dados?.credor}
+              value={credor}
               onChange={credorChangeHandler}
               placeholder="Ex.: InfoTech ltd."
               required
@@ -145,18 +150,18 @@ export function EditarDespesa(props) {
             <input
               type="text"
               class="form-control"
-              value={dados?.descricao}
+              value={descricao}
               onChange={descricaoChangeHandler}
               placeholder=""
               required
             ></input>
           </div>
           <div class="col">
-            <label htmlFor="">Valor da despesa</label>
+            <label htmlFor="">Valor da empenho</label>
             <input
               type="text"
               class="form-control"
-              value={dados?.valor}
+              value={valor}
               onChange={valorChangeHandler}
               placeholder="Ex.: 2000.00"
               required

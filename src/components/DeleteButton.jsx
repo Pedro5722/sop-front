@@ -4,17 +4,20 @@ import { useNavigate } from "react-router-dom";
 
 export function DeleteButton(props) {
   const id = props.id;
+  const modelo = props.modelo;
   const navigate = useNavigate();
   function Delete() {
     axios
-      .delete(`http://localhost:8084/financeiro-api/despesa/${id}`)
+      .delete(`http://localhost:8084/financeiro-api/${modelo}/${id}`)
       .then((response) => {
-        alert("Despesa deletada");
+        alert(`${modelo} removido com sucesso`);
         navigate("/despesa");
       })
       .catch((error) => {
         alert("Erro ao deletar");
       });
+
+      window.location.reload(false);
   }
 
   return (

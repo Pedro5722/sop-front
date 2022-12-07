@@ -41,7 +41,7 @@ export function AdicionarDespesa() {
     axios
       .post(baseURL,{
         numeroProtocolo: numeroProtocolo,
-        tipo: 2,
+        tipo: tipoDespesa,
         dataProtocolo: dataProtocolo,
         dataVencimento: dataVencimento,
         credor: credor,

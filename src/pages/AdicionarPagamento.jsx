@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ConvertDateJson } from "../components/util/ConvertDate";
 
-export function AdicionarEmpenho() {
-  const baseURL = "http://localhost:8084/financeiro-api/empenho";
+export function Adicionarpagamento() {
+  const baseURL = "http://localhost:8084/financeiro-api/pagamento";
   const navigate = useNavigate();
   const [ano, setano] = useState(0);
   const [numero, setnumero] = useState(0);
@@ -43,7 +43,7 @@ export function AdicionarEmpenho() {
         navigate("/");
       })
       .catch((error) => {
-        alert("Erro: erro ao cadastrar a Empenho");
+        alert("Erro: erro ao cadastrar pagamento");
       });
   };
 
@@ -63,7 +63,7 @@ export function AdicionarEmpenho() {
       <form class="card mx-5" onSubmit={submitActionHandler}>
         <div class="form-row p-5">
           <div class="col">
-            <label>Numero do empenho</label>
+            <label>Numero do pagamento</label>
             <input
               type="number"
               class="form-control"
@@ -74,7 +74,7 @@ export function AdicionarEmpenho() {
             />
           </div>
           <div class="col">
-            <label>Ano do empenho</label>
+            <label>Ano do pagamento</label>
             <input
               type="year"
               class="form-control"
@@ -112,7 +112,7 @@ export function AdicionarEmpenho() {
               class="form-control"
               value={observacao}
               onChange={observacaoChangeHandler}
-              placeholder="Ex.: empenho da despesa 22123"
+              placeholder="Ex.: pagamento da despesa 22123"
               required
             />
           </div>
