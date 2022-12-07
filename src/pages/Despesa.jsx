@@ -1,13 +1,11 @@
-import { PencilLine, Trash } from 'phosphor-react';
-import { AddButton } from '../components/AddButton';
-import { EditButton } from '../components/EditButton';
-import { Table } from '../components/Table';
+import { AddButton } from "../components/AddButton";
+import { Table } from "../components/Table";
 
-export function Despesa(){
-  return(
+export function Despesa() {
+  return (
     <div>
-      <AddButton/>
-      <Table modelo="despesa"/>    
+      <AddButton modelo="despesa"/>
+      <Table modelo="despesa" />
     </div>
-  )
+  );
 }

@@ -6,9 +6,9 @@ export function Navbar(){
     <div>
       <navbar>
         <ul>
-          <li><a href="#">DESPESA</a></li>
-          <li><a href="#">EMPENHO</a></li>
-          <li><a href="#">PAGAMENTO</a></li>
+          <li><a href="/despesa">DESPESA</a></li>
+          <li><a href="/empenho">EMPENHO</a></li>
+          <li><a href="/pagamento">PAGAMENTO</a></li>
         </ul>
       </navbar>
     </div>
