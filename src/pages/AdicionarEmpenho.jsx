@@ -68,7 +68,7 @@ export function AdicionarEmpenho() {
       <form class="card mx-5" onSubmit={submitActionHandler}>
         <div class="form-row p-5">
           <div class="col">
-            <label>NumeroProtocolo</label>
+            <label>Numero do protocolo da despesa</label>
             <input
               type="number"
               class="form-control"

@@ -11,7 +11,6 @@ export function DeleteButton(props) {
       .delete(`http://localhost:8084/financeiro-api/${modelo}/${id}`)
       .then((response) => {
         alert(`${modelo} removido com sucesso`);
-        navigate("/despesa");
       })
       .catch((error) => {
         alert(error.response.data)

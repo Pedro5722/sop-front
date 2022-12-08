@@ -9,8 +9,6 @@ import './index.css'
 import { AdicionarDespesa } from './pages/AdicionarDespesa'
 import { AdicionarEmpenho } from './pages/AdicionarEmpenho'
 import { Adicionarpagamento } from './pages/AdicionarPagamento'
-import { EditarDespesa } from './pages/EditarDespesa'
-import { Editarpagamento } from './pages/EditarPagamento'
 import { Empenho } from './pages/Empenho'
 import { ErrorPage } from './pages/ErrorPage'
 import { Pagamento } from './pages/Pagamento'
@@ -42,18 +40,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage/>
   },
   {
-    path: "/edit/:id",
-    element: <EditarDespesa/>,
-    errorElement: <ErrorPage/>
-  },
-  {
     path: "/adicionar-empenho",
     element: <AdicionarEmpenho/>,
-    errorElement: <ErrorPage/>
-  },
-  {
-    path: "/edit-empenho/:id",
-    element: <EditarDespesa/>,
     errorElement: <ErrorPage/>
   },
   {
@@ -61,11 +49,6 @@ const router = createBrowserRouter([
     element: <Adicionarpagamento/>,
     errorElement: <ErrorPage/>
   },
-  {
-    path: "/edit-pagamento/:id",
-    element: <Editarpagamento/>,
-    errorElement: <ErrorPage/>
-  }
 ])
 
 

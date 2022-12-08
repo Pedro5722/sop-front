@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { DeleteButton } from "./DeleteButton";
-import { EditButton } from "./EditButton";
 
 import "./Table.css";
 import { ConvertDate } from "./util/ConvertDate";
@@ -28,7 +27,6 @@ export function Table(props) {
           <td>{val.descricao}</td>
           <td>{val.valor}</td>
           <td>
-            <EditButton id={val.id} />
             <DeleteButton id={val.id} modelo={props.modelo} />
           </td>
         </tr>
@@ -56,7 +54,7 @@ export function Table(props) {
     );
   }
 
-  if (props.modelo == "empenho") {
+  if (props.modelo == "pagamento") {
     function renderTable() {
       return rows?.map((val) => (
         <tr key={val.id}>
@@ -67,7 +65,6 @@ export function Table(props) {
           <td>{val.valor}</td>
           <td>{val.observacao}</td>
           <td>
-            <EditButton id={val.id} />
             <DeleteButton id={val.id} modelo={props.modelo} />
           </td>
         </tr>
@@ -104,7 +101,6 @@ export function Table(props) {
           <td>{val.valor}</td>
           <td>{val.observacao}</td>
           <td>
-            <EditButton id={val.id} />
             <DeleteButton id={val.id} modelo={props.modelo} />
           </td>
         </tr>

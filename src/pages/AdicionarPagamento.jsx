@@ -44,14 +44,16 @@ export function Adicionarpagamento() {
         numero: numero,
         data: data,
         valor: valor,
-        observacao: observacao,        
+        observacao: observacao, 
+        numeroEmpenho: numeroEmpenho,
+        anoEmpenho: anoEmpenho       
       })
       .then((response) => {
         alert("Sucesso: " + numeroProtocolo + " adicionado!");
         navigate("/pagamento");
       })
       .catch((error) => {
-        alert("Erro: erro ao cadastrar pagamento");
+        alert(error);
       });
   };
 
