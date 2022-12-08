@@ -50,7 +50,7 @@ export function AdicionarDespesa() {
       })
       .then((response) => {
         alert("Sucesso: " + numeroProtocolo + " adicionado!");
-        navigate("/");
+        //navigate("/despesa");
       })
       .catch((error) => {
         alert("Erro: erro ao cadastrar a despesa");
@@ -71,7 +71,7 @@ export function AdicionarDespesa() {
   return (
     <div class="m-5">
       <button class="mx-5 mb-3">
-        <a href="/">Voltar a tela inicial</a>
+        <a href="/despesa">Voltar a tela de despesas</a>
       </button>
       <form class="card mx-5" onSubmit={submitActionHandler}>
         <div class="form-row p-5">

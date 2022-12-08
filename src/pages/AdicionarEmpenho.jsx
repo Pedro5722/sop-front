@@ -10,8 +10,12 @@ export function AdicionarEmpenho() {
   const [data, setdata] = useState(Date);
   const [valor, setvalor] = useState(0.00);
   const [observacao, setObservacao] = useState("");
+  const [numeroProtocolo, setNumeroProtocolo] = useState("");
   
 
+  const numeroProtocoloChangeHandler = (event) => {
+    setNumeroProtocolo(event.target.value);
+  };
   const anoChangeHandler = (event) => {
     setano(event.target.value);
   };
@@ -36,14 +40,15 @@ export function AdicionarEmpenho() {
         numero: numero,
         data: data,
         valor: valor,
-        observacao: observacao,        
+        observacao: observacao,  
+        numeroProtocolo: numeroProtocolo      
       })
       .then((response) => {
-        alert("Sucesso: " + numeroProtocolo + " adicionado!");
-        navigate("/");
+        alert("Sucesso: empenho adicionado!");
+        navigate("/empenho");
       })
       .catch((error) => {
-        alert("Erro: erro ao cadastrar a Empenho");
+        alert(error);
       });
   };
 
@@ -58,11 +63,20 @@ export function AdicionarEmpenho() {
   return (
     <div class="m-5">
       <button class="mx-5 mb-3">
-        <a href="/">Voltar a tela inicial</a>
+        <a href="/empenho">Voltar a tela de Empenhos</a>
       </button>
       <form class="card mx-5" onSubmit={submitActionHandler}>
         <div class="form-row p-5">
           <div class="col">
+            <label>NumeroProtocolo</label>
+            <input
+              type="number"
+              class="form-control"
+              value={numeroProtocolo}
+              onChange={numeroProtocoloChangeHandler}
+              placeholder="Ex.: 123123123"
+              required
+            />
             <label>Numero do empenho</label>
             <input
               type="number"

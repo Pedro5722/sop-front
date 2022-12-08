@@ -14,10 +14,10 @@ export function DeleteButton(props) {
         navigate("/despesa");
       })
       .catch((error) => {
-        alert("Erro ao deletar");
+        alert(error.response.data)
       });
 
-      window.location.reload(false);
+      // window.location.reload(false);
   }
 
   return (

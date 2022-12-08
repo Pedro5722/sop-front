@@ -5,6 +5,8 @@ import { ConvertDateJson } from "../components/util/ConvertDate";
 export function Adicionarpagamento() {
   const baseURL = "http://localhost:8084/financeiro-api/pagamento";
   const navigate = useNavigate();
+  const [anoEmpenho, setAnoEmpenho] = useState(0);
+  const [numeroEmpenho, setNumeroEmpenho] = useState(0);
   const [ano, setano] = useState(0);
   const [numero, setnumero] = useState(0);
   const [data, setdata] = useState(Date);
@@ -12,6 +14,12 @@ export function Adicionarpagamento() {
   const [observacao, setObservacao] = useState("");
   
 
+  const anoEmpenhoChangeHandler = (event) => {
+    setAnoEmpenho(event.target.value);
+  };
+  const numeroEmpenhoChangeHandler = (event) => {
+    setNumeroEmpenho(event.target.value);
+  };
   const anoChangeHandler = (event) => {
     setano(event.target.value);
   };
@@ -40,7 +48,7 @@ export function Adicionarpagamento() {
       })
       .then((response) => {
         alert("Sucesso: " + numeroProtocolo + " adicionado!");
-        navigate("/");
+        navigate("/pagamento");
       })
       .catch((error) => {
         alert("Erro: erro ao cadastrar pagamento");
@@ -58,14 +66,36 @@ export function Adicionarpagamento() {
   return (
     <div class="m-5">
       <button class="mx-5 mb-3">
-        <a href="/">Voltar a tela inicial</a>
+        <a href="/pagamento">Voltar a tela de pagamentos</a>
       </button>
       <form class="card mx-5" onSubmit={submitActionHandler}>
         <div class="form-row p-5">
           <div class="col">
+            <label>Numero do empenho</label>
+            <input
+              type="text"
+              class="form-control"
+              value={numeroEmpenho}
+              onChange={numeroEmpenhoChangeHandler}
+              placeholder="Ex.: 123123123"
+              required
+            />
+          </div>
+          <div class="col">
+            <label>Ano do empenho</label>
+            <input
+              type="year"
+              class="form-control"
+              value={anoEmpenho}
+              onChange={anoEmpenhoChangeHandler}
+              placeholder="Ex.: 2022"
+              required
+            />
+          </div>
+          <div class="col">
             <label>Numero do pagamento</label>
             <input
-              type="number"
+              type="text"
               class="form-control"
               value={numero}
               onChange={numeroChangeHandler}
